@@ -1,52 +1,53 @@
-<p align="center">
-  <a href="https://www.docx-editor.dev/">
-    <img src="./assets/header.png" alt="DOCX Editor — .docx in, .docx out. Open source, agent ready, client-side." width="500" />
-  </a>
-</p>
+# DOCX Editor - Vue
 
-<p align="center">
-  <a href="https://www.npmjs.com/package/@eigenpal/docx-js-editor"><img src="https://img.shields.io/npm/v/@eigenpal/docx-js-editor.svg?style=flat-square&color=3B5BDB" alt="npm version" /></a>
-  <a href="https://www.npmjs.com/package/@eigenpal/docx-js-editor"><img src="https://img.shields.io/npm/dm/@eigenpal/docx-js-editor.svg?style=flat-square&color=3B5BDB" alt="npm downloads" /></a>
-  <a href="https://github.com/eigenpal/docx-js-editor/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square&color=3B5BDB" alt="license" /></a>
-  <a href="https://docx-editor.dev/editor"><img src="https://img.shields.io/badge/Live_Demo-3B5BDB?style=flat-square&logo=vercel&logoColor=white" alt="Demo" /></a>
-  <a href="https://www.docx-editor.dev/docs"><img src="https://img.shields.io/badge/Docs-3B5BDB?style=flat-square&logo=readthedocs&logoColor=white" alt="Documentation" /></a>
-</p>
-
-Open-source WYSIWYG `.docx` editor for React with canonical OOXML, tracked changes, and real-time collaboration. Agent-ready. **[Live demo](https://docx-editor.dev/editor)** | **[Documentation](https://www.docx-editor.dev/docs)**
+A pure Vue 3 DOCX editor built with Vite. Edit the core source code directly!
 
 ## Quick Start
 
 ```bash
-npm install @eigenpal/docx-js-editor
+npm install
+npm run dev
 ```
 
-```tsx
-import { useRef } from 'react';
-import { DocxEditor, type DocxEditorRef } from '@eigenpal/docx-js-editor';
-import '@eigenpal/docx-js-editor/styles.css';
+The dev server will open at `http://localhost:5173` with hot reload enabled.
 
-function Editor({ file }: { file: ArrayBuffer }) {
-  const editorRef = useRef<DocxEditorRef>(null);
-  return <DocxEditor ref={editorRef} documentBuffer={file} mode="editing" onChange={() => {}} />;
-}
+## Project Structure
+
+```
+packages/
+├── core/          # DOCX parsing, serialization, and core logic
+│   └── src/
+│       ├── docx/           # DOCX format parsing
+│       ├── prosemirror/    # ProseMirror integration
+│       ├── agent/          # Document agent
+│       ├── utils/          # Utilities
+│       └── ...
+└── vue/           # Vue components and wrappers
+    └── src/
+
+src/               # Development environment
+├── main.ts        # Vue app entry
+├── App.vue        # Root component
+└── style.css
 ```
 
-> **Next.js / SSR:** Use dynamic import — the editor requires the DOM.
+## Development
 
-<p align="center">
-  <a href="https://docx-editor.dev/editor">
-    <img src="./assets/editor.png" alt="DOCX JS Editor screenshot" width="100%" />
-  </a>
-</p>
+- `npm run dev` - Start dev server with hot reload (localhost:5173)
+- `npm run build` - Build both packages
+- `npm run typecheck` - Type checking
 
-## Packages
+## Edit Source Code
 
-| Package                                      | Description                                                  |
-| -------------------------------------------- | ------------------------------------------------------------ |
-| [`@eigenpal/docx-js-editor`](packages/react) | React UI — toolbar, paged editor, plugins. **Install this.** |
-| [`@eigenpal/docx-editor-vue`](packages/vue)  | Vue.js scaffold — contributions welcome                      |
+Edit files directly in:
+- **`packages/core/src/`** - DOCX processing logic  
+- **`packages/vue/src/`** - Vue components
 
-## Plugins
+Changes will auto-reload via Vite's hot module replacement!
+
+## License
+
+MIT
 
 ```tsx
 import { DocxEditor, PluginHost, templatePlugin } from '@eigenpal/docx-js-editor';
