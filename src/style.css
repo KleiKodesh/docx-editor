@@ -1,16 +1,14 @@
-:root {
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #app {
+  height: 100%;
 }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-#app {
-  width: 100%;
+  font-family: system-ui, -apple-system, sans-serif;
+  background: #f0f0f0;
 }
